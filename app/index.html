@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Run Timer</title>
+    <title>Alura Timer</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
@@ -10,7 +10,7 @@
         <div id="link-sobre">
             <img class="info-button" src="img/info-button.svg">
         </div>
-        <h1 class="titulo">Run Timer</h1>
+        <h1 class="titulo">Time Tracking</h1>
         <div class="timer">
             <div class="relogio">
                 <span class="tempo">00:00:00</span>
@@ -19,10 +19,16 @@
                 <img class="botao-play" src="img/play-button.svg">
             </div>
             <div class="curso-container">
-                <span class="curso">projeto-programação</span>
+                <span class="curso">introducao-javascript</span>
             </div>
         </div>
-
+        <div class="group">
+            <input type="text" class="campo-adicionar" required>
+            <img src="img/plus.svg" class='botao-adicionar'>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Novo curso</label>
+        </div>
     </section>
     <script>require('./js/renderer')</script>
 </body>

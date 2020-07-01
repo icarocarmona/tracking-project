@@ -1,11 +1,22 @@
 {
-  "name": "runtime",
+  "name": "timer-tracking",
   "version": "1.0.0",
-  "description": "",
+  "description": "An awesome app!",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "start:debug": "electron main.js --enable-logging",
+    "dev": "nodemon --exec electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "dist:all": "npm-run-all -p dist:*",
+    "dist:mac": "electron-builder --mac",
+    "dist:windows": "electron-builder --windows",
+    "dist:linux": "electron-builder --linux",
+    "postinstall": "electron-builder install-app-deps",
+    "package-linux": "electron-packager .  timer-tracking --overwrite --asar=true --platform=linux --arch=x64 --icon=app/img/icon.png --prune=true --out=release-builds",
+    "create-installer-win": "node installers/windows/createinstaller.js",
+    "create-debian-installer": "electron-installer-debian --src release-builds/timer-tracking-linux-x64/ --arch amd64 --config debian.json"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +24,24 @@
     "electron": "^9.0.0",
     "jsonfile-promised": "0.0.1",
     "moment": "^2.26.0"
+  },
+  "build": {
+    "appId": "com.icaro.carmona",
+    "productName": "Time Tracking",
+    "mac": {
+      "category": "public.app-category.tracking"
+    },
+    "linux": {
+      "category": "Utility",
+      "icon": "icon.png",
+      "target": [
+        "deb",
+        "snap",
+        "rpm"
+      ]
+    }
+  },
+  "devDependencies": {
+    "electron-packager": "^14.2.1"
   }
 }
